@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DarkModeBtn } from "./DarkModeBtn";
-import { Routes } from "@/utils/interfaces";
+import { Dictionary, Routes } from "@/utils/interfaces";
 
 export const Navigation = () => {
   return (
@@ -9,7 +9,7 @@ export const Navigation = () => {
         <div className="p-8">
           <Link href={Routes.COUNTRIES}>
             <span className="font-extrabold text-base text-veryLightBlue dark:text-white">
-              Where in the world?
+              {Dictionary.WHEREINTHEWORD}
             </span>
           </Link>
         </div>

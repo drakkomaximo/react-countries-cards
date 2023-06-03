@@ -1,19 +1,17 @@
-'use client'
-import { CountryCard, RegionSelect } from "@/components";
-import { useCountries } from "@/hooks";
+import { CountryCard } from "@/components";
 
-const fecthCountriesList = async () => {
-  const res = await fetch(`${process.env.countryApi}/all`);
+const fecthCountriesByRegionList = async ({region}: {region: string}) => {
+  const res = await fetch(`${process.env.countryApi}/region/${region}`);
   return await res.json();
 };
 
-const CountriesPage = async () => {
-  const { countries: countriesList } = useCountries();
-  const countries = await fecthCountriesList();
+const CountriesByRegionPage = async ({params}) => {
+  const { region } = params;
+  const countriesByRegion = await fecthCountriesByRegionList({ region });
   return (
     <div className="flex flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
       <div className="flex flex-wrap max-w-7xl justify-between">
-        {(countriesList.length > 0 ? countriesList : countries).map(
+        {countriesByRegion.map(
           (country: any) => (
             <CountryCard
               key={country.cca2}
@@ -30,4 +28,4 @@ const CountriesPage = async () => {
   );
 };
 
-export default CountriesPage;
+export default CountriesByRegionPage;

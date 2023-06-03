@@ -1,21 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { Dictionary } from "@/utils/interfaces";
 
 export const DarkModeBtn = () => {
-  const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 
@@ -32,7 +24,7 @@ export const DarkModeBtn = () => {
             icon={faSun}
             style={{ fontSize: 20, color: "hsl(0, 0%, 100%)", marginRight: '0.5rem' }}
           />{" "}
-          Light mode
+          {Dictionary.LIGHTMODE}
         </p>
       ) : (
         <p
@@ -45,7 +37,7 @@ export const DarkModeBtn = () => {
             icon={faMoon}
             style={{ fontSize: 20, color: "hsl(200, 15%, 8%)", marginRight: '0.5rem' }}
           />{" "}
-          Dark mode
+          {Dictionary.DARKMODE}
         </p>
       )}
     </div>
