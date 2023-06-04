@@ -4,6 +4,8 @@ export enum Dictionary {
   WHEREINTHEWORD = "Where in the world?",
   DOESNOTHAVE = "Does not have",
   FILTERBYREGION = "Filter by region",
+  SEARCHFORACOUNTRY = "Search for a country...",
+  COUNTRYNOTFOUND = "Country not found"
 }
 
 export enum Routes {
@@ -25,9 +27,11 @@ export enum LabelOption {
 }
 
 export enum CountriesReducerActions {
-  GETALLCOUNTRIES = '[Countries] Get all countries',
   GETCOUNTRYBYNAME = '[Countries] Get country by name',
+  SETALLCOUNTRIES = '[Countries] Set all countries',
+  SETCOUNTRIESBYSEARCHFILTER = '[Countries] Set countries by search filter',
   SETCOUNTRIESBYREGION = '[Countries] Set countries by region',
+  SETREGIONFILTERVALUE = '[Countries] Set region filter value',
 }
 
 export const regionOptions = [
@@ -66,22 +70,28 @@ interface Languages {
   [x: string]: string;
 }
 
-export interface Country {
+export interface ICountryCard {
   name: {
     common: string;
     official: string;
     nativeName: NativeName;
   };
-  tld: string;
   cca2: string;
-  currencies: Currencies;
   capital: string;
   region: string;
+  population: number;
+}
+
+export interface ICountry extends ICountryCard {
+  tld: string;
+  currencies: Currencies;
   subregion: string;
   languages: Languages;
   borders: string[];
-  population: number;
 }
+
+export const CountryCardFields = `/?fields=name,capital,cca2,region,population`
+export const CountryInfoFields = `/?fields=name,capital,cca2,region,population,tld,currencies,subregion,languages,borders`
 
 export const Alpha3Codes: Record<string, string> = {
   ABW: "Aruba",

@@ -1,4 +1,4 @@
-import { RegionSelect } from "@/components";
+import { RegionSelect, SearchBar } from "@/components";
 
 export default function RootLayout({
   children,
@@ -9,7 +9,11 @@ export default function RootLayout({
     <>
       <div className="flex flex-wrap w-full justify-center bg-veryLightGray dark:bg-veryDarkBlue pt-10">
       <div className="flex justify-center w-full max-w-7xl">
-        <div className="w-1/2"></div>
+        <div className="flex justify-start w-1/2">
+          <div className="w-3/4">
+            <SearchBar />
+          </div>
+        </div>
         <div className="flex justify-end w-1/2">
           <div className="w-1/4">
             <RegionSelect />

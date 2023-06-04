@@ -1,18 +1,23 @@
-import { CountryCard } from "@/components";
+"use client";
 
-const fecthCountriesByRegionList = async ({region}: {region: string}) => {
-  const res = await fetch(`${process.env.countryApi}/region/${region}`);
-  return await res.json();
-};
+import { CountryCard, CountryNotFound } from "@/components";
+import { useCountries } from "@/hooks";
+import { useEffect, useState } from "react";
 
-const CountriesByRegionPage = async ({params}) => {
+const CountriesByRegionPage = ({ params }) => {
+  const [isActive, setIsActive] = useState(true);
   const { region } = params;
-  const countriesByRegion = await fecthCountriesByRegionList({ region });
+  const { countriesFiltered, getCountriesByRegionApi } = useCountries();
+
+  useEffect(() => {
+    isActive && getCountriesByRegionApi({ region });
+    countriesFiltered.length > 0 && setIsActive(false);
+  }, [countriesFiltered, getCountriesByRegionApi, isActive, region]);
   return (
     <div className="flex flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
       <div className="flex flex-wrap max-w-7xl justify-between">
-        {countriesByRegion.map(
-          (country: any) => (
+        {countriesFiltered.length > 0 ? (
+          countriesFiltered.map((country: any) => (
             <CountryCard
               key={country.cca2}
               capital={country.capital}
@@ -21,7 +26,9 @@ const CountriesByRegionPage = async ({params}) => {
               population={country.population}
               region={country.region}
             />
-          )
+          ))
+        ) : (
+          <CountryNotFound />
         )}
       </div>
     </div>

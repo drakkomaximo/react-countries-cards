@@ -1,16 +1,10 @@
 import { BackBtn, CountryDescription } from "@/components";
-import { Country, Dictionary } from "@/utils/interfaces";
-
-const fecthCountry = async ({ country }: { country: string }) => {
-  const res = await fetch(
-    `${process.env.countryApi}/name/${country}?fullText=true`
-  );
-  return await res.json();
-};
+import { fecthCountry } from "@/services";
+import { ICountry, Dictionary } from "@/utils/interfaces";
 
 const CountryInfo = async ({ params }) => {
   const { name } = params;
-  const country: Country[] = await fecthCountry({ country: name });
+  const country: ICountry[] = await fecthCountry({ country: name });
 
   return (
     <div className="flex flex-col h-[calc(100vh-5.5rem)] flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">

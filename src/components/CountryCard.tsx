@@ -21,9 +21,9 @@ export const CountryCard: FC<CountryCardProps> = ({
   region,
 }) => {
   return (
-    <article className="w-72 rounded-sm mb-20 cursor-pointer bg-white dark:bg-darkBlue">
+    <article className="w-72 shadow-md rounded-sm mb-20 cursor-pointer bg-white dark:bg-darkBlue">
       <Link href={`${Routes.COUNTRY}/[name]`} as={`${Routes.COUNTRY}/${formatName({ name: common })}`}>
-        <div className="w-full h-40">
+        <div className="w-full h-40 shadow-md">
           <Flag
             code={cca2}
             style={{ objectFit: "cover", width: "100%", height: "100%" }}

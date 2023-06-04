@@ -1,8 +1,5 @@
 "use client";
 import { useTheme } from "next-themes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { Dictionary } from "@/utils/interfaces";
 
 export const DarkModeBtn = () => {
@@ -20,10 +17,7 @@ export const DarkModeBtn = () => {
             setTheme("light");
           }}
         >
-          <FontAwesomeIcon
-            icon={faSun}
-            style={{ fontSize: 20, color: "hsl(0, 0%, 100%)", marginRight: '0.5rem' }}
-          />{" "}
+          <i className="ti ti-sun mr-2"></i>
           {Dictionary.LIGHTMODE}
         </p>
       ) : (
@@ -33,10 +27,7 @@ export const DarkModeBtn = () => {
             setTheme("dark");
           }}
         >
-          <FontAwesomeIcon
-            icon={faMoon}
-            style={{ fontSize: 20, color: "hsl(200, 15%, 8%)", marginRight: '0.5rem' }}
-          />{" "}
+          <i className="ti ti-moon-filled mr-2"></i>
           {Dictionary.DARKMODE}
         </p>
       )}

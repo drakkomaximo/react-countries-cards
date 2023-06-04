@@ -1,20 +1,22 @@
-'use client'
-import { CountryCard, RegionSelect } from "@/components";
+"use client";
+import { CountryCard, CountryNotFound } from "@/components";
 import { useCountries } from "@/hooks";
+import { useEffect, useState } from "react";
 
-const fecthCountriesList = async () => {
-  const res = await fetch(`${process.env.countryApi}/all`);
-  return await res.json();
-};
+const CountriesPage = () => {
+  const [isActive, setIsActive] = useState(true);
+  const { countriesFiltered, getCountriesByApi } = useCountries();
 
-const CountriesPage = async () => {
-  const { countries: countriesList } = useCountries();
-  const countries = await fecthCountriesList();
+  useEffect(() => {
+    isActive && getCountriesByApi();
+    countriesFiltered.length > 0 && setIsActive(false);
+  }, [countriesFiltered, getCountriesByApi, isActive]);
+
   return (
     <div className="flex flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
       <div className="flex flex-wrap max-w-7xl justify-between">
-        {(countriesList.length > 0 ? countriesList : countries).map(
-          (country: any) => (
+        {countriesFiltered.length > 0 ? (
+          countriesFiltered.map((country) => (
             <CountryCard
               key={country.cca2}
               capital={country.capital}
@@ -23,7 +25,9 @@ const CountriesPage = async () => {
               population={country.population}
               region={country.region}
             />
-          )
+          ))
+        ) : (
+          <CountryNotFound />
         )}
       </div>
     </div>

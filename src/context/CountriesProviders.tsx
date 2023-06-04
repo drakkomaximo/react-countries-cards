@@ -1,31 +1,46 @@
 'use client'
 import { FC, useReducer } from "react";
 import { CountriesContext, countriesReducers } from ".";
-import { Country } from "@/utils/interfaces";
+import { CountriesReducerActions, Dictionary, ICountryCard } from "@/utils/interfaces";
 
 export interface CountriesState {
-  countries: Country[];
+  countries: ICountryCard[];
+  countriesFiltered: ICountryCard[];
+  regionFilter: string;
 }
 
 const COUNTRIES_INITIAL_STATE: CountriesState = {
-  countries: []
+  countries: [],
+  countriesFiltered: [],
+  regionFilter: Dictionary.FILTERBYREGION
 };
 
 export const CountriesProvider: FC<{ children: JSX.Element }> = ({ children }) => {
   const [state, dispatch] = useReducer(countriesReducers, COUNTRIES_INITIAL_STATE);
 
-/*   const setGlobalScore = ({ errors, pairs }: Score) => {
+  const setRegionFilterValue = ({ region }: {region: string}) => {
     dispatch({
-      type: "[User] Set Global Score",
-      payload: {
-        errors,
-        pairs,
-      },
+      type: CountriesReducerActions.SETREGIONFILTERVALUE,
+      payload: region,
     });
-  }; */
+  };
+
+  const setCountries = ({ countries }: {countries: ICountryCard[] }) => {
+    dispatch({
+      type: CountriesReducerActions.SETALLCOUNTRIES,
+      payload: countries,
+    });
+  };
+
+  const setCountriesFiltered = ({ countries }: {countries: ICountryCard[] }) => {
+    dispatch({
+      type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER,
+      payload: countries,
+    });
+  };
 
   return (
-    <CountriesContext.Provider value={{...state}}>
+    <CountriesContext.Provider value={{...state, setRegionFilterValue, setCountries, setCountriesFiltered}}>
       {children}
     </CountriesContext.Provider>
   );

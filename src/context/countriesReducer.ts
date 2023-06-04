@@ -1,29 +1,37 @@
 'use client'
-import { CountriesReducerActions, Country } from "@/utils/interfaces";
+import { CountriesReducerActions, ICountry, ICountryCard } from "@/utils/interfaces";
 import { CountriesState } from ".";
 
 type CountriesActionType =
-/*   | { type: "[User] Set User Profile"; payload: User }
-  | { type: "[User] Set Global Score"; payload: Score }
-  | { type: "[User] Add Mistake On Current Score" }
-  | { type: "[User] Add Check On Current Score" } */
-  | { type: CountriesReducerActions.GETALLCOUNTRIES, payload: Country[] }
-  | { type: CountriesReducerActions.GETCOUNTRYBYNAME, payload: Country }
-  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: Country[] };
+  | { type: CountriesReducerActions.SETALLCOUNTRIES, payload: ICountryCard[] }
+  | { type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER, payload: ICountryCard[] }
+  | { type: CountriesReducerActions.GETCOUNTRYBYNAME, payload: ICountry }
+  | { type: CountriesReducerActions.SETREGIONFILTERVALUE, payload: string }
+  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: ICountry[] };
 
 export const countriesReducers = (
   state: CountriesState,
   action: CountriesActionType
 ): CountriesState => {
   switch (action.type) {
-    case CountriesReducerActions.GETALLCOUNTRIES:
+    case CountriesReducerActions.SETALLCOUNTRIES:
       return {
         ...state,
         countries: action.payload
       };
+    case CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER:
+      return {
+        ...state,
+        countriesFiltered: action.payload
+      };
     case CountriesReducerActions.GETCOUNTRYBYNAME:
       return {
         ...state,
+      };
+    case CountriesReducerActions.SETREGIONFILTERVALUE:
+      return {
+        ...state,
+        regionFilter: action.payload
       };
     case CountriesReducerActions.SETCOUNTRIESBYREGION:
       return {
