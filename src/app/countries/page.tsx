@@ -1,5 +1,5 @@
 "use client";
-import { CountryCard, CountryNotFound, Loader } from "@/components";
+import { CountryCard, SearchNotFound, Loader } from "@/components";
 import { useCountries } from "@/hooks";
 import { useEffect, useState } from "react";
 
@@ -29,7 +29,7 @@ const CountriesPage = () => {
         ) : countriesFiltered.length === 0 && countries.length === 0 ? (
           <Loader />
         ) : (
-          <CountryNotFound />
+          <SearchNotFound />
         )}
       </div>
     </div>

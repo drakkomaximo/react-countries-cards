@@ -1,6 +1,6 @@
 "use client";
 
-import { CountryCard, CountryNotFound } from "@/components";
+import { CountryCard, SearchNotFound } from "@/components";
 import { useCountries } from "@/hooks";
 import { FC, useEffect, useState } from "react";
 
@@ -32,7 +32,7 @@ const CountriesByRegionPage: FC<CountriesByRegionPageProps> = ({ params }) => {
             />
           ))
         ) : (
-          <CountryNotFound />
+          <SearchNotFound />
         )}
       </div>
     </div>

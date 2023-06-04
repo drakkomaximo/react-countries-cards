@@ -6,7 +6,7 @@ const CountryInfo = async ({ params }: { params: { name: string } }) => {
   const country = await fecthCountry({ country: name });
 
   return (
-    <div className="flex flex-col h-[calc(100vh-5.5rem)] flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
+    <div className="flex flex-col h-[calc(100vh-5.5rem)] flex-wrap w-full items-start justify-start pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
       <div className="px-32">
         <BackBtn />
       </div>

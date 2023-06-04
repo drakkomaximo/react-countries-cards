@@ -3,9 +3,13 @@ export enum Dictionary {
   LIGHTMODE = "Light mode",
   WHEREINTHEWORD = "Where in the world?",
   DOESNOTHAVE = "Does not have",
+  COUNTRYDOESNOTEXIST = "Country does not exist",
   FILTERBYREGION = "Filter by region",
   SEARCHFORACOUNTRY = "Search for a country...",
-  COUNTRYNOTFOUND = "Country not found"
+  SEARCHNOTFOUND = "Search not found",
+  YOUAREALONEHERE = "You are all alone here...",
+  RETURNTO = "Return to",
+  COUNTRIESLIST = "Countries list"
 }
 
 export enum Routes {
@@ -87,6 +91,11 @@ interface Languages {
   [x: string]: string;
 }
 
+export interface BadRequest {
+  status: 404;
+  message: string;
+}
+
 export interface ICountryCard {
   name: {
     common: string;
@@ -100,6 +109,7 @@ export interface ICountryCard {
 }
 
 export interface ICountry extends ICountryCard {
+  status?: number;
   tld: string;
   currencies: Currencies;
   subregion: string;

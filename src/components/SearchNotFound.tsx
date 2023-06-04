@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
 import { PlanetIcon } from "@/assets/icons";
-import { Dictionary } from "@/utils/interfaces";
+import { Dictionary, Routes } from "@/utils/interfaces";
 import { useTheme } from "next-themes";
-import React from "react";
+import Link from "next/link";
 
-export const CountryNotFound = () => {
+export const SearchNotFound = () => {
   const { systemTheme, theme } = useTheme();
 
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -18,8 +18,13 @@ export const CountryNotFound = () => {
         }
       />
       <h1 className="dark:text-white text-veryLightBlue font-extrabold text-base">
-        {Dictionary.COUNTRYNOTFOUND}
+        {Dictionary.SEARCHNOTFOUND}
       </h1>
+      <p className="dark:text-white text-veryLightBlue font-extrabold text-base animate-pulse">
+        <Link href={Routes.COUNTRIES}>
+          {Dictionary.RETURNTO} {Dictionary.COUNTRIESLIST}
+        </Link>
+      </p>
     </div>
   );
 };
