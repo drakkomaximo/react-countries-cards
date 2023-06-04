@@ -1,11 +1,11 @@
 'use client'
 import { FC, useReducer } from "react";
 import { CountriesContext, countriesReducers } from ".";
-import { CountriesReducerActions, Dictionary, ICountryCard } from "@/utils/interfaces";
+import { CountriesReducerActions, CountryCardAdapter, Dictionary } from "@/utils/interfaces";
 
 export interface CountriesState {
-  countries: ICountryCard[];
-  countriesFiltered: ICountryCard[];
+  countries: CountryCardAdapter[];
+  countriesFiltered: CountryCardAdapter[];
   regionFilter: string;
 }
 
@@ -25,14 +25,14 @@ export const CountriesProvider: FC<{ children: JSX.Element }> = ({ children }) =
     });
   };
 
-  const setCountries = ({ countries }: {countries: ICountryCard[] }) => {
+  const setCountries = ({ countries }: {countries: CountryCardAdapter[] }) => {
     dispatch({
       type: CountriesReducerActions.SETALLCOUNTRIES,
       payload: countries,
     });
   };
 
-  const setCountriesFiltered = ({ countries }: {countries: ICountryCard[] }) => {
+  const setCountriesFiltered = ({ countries }: {countries: CountryCardAdapter[] }) => {
     dispatch({
       type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER,
       payload: countries,

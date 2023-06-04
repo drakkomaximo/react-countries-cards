@@ -34,6 +34,23 @@ export enum CountriesReducerActions {
   SETREGIONFILTERVALUE = '[Countries] Set region filter value',
 }
 
+export interface CountryCardAdapter {
+  commonName: string;
+  cca2: string;
+  capital: string;
+  region: string;
+  population: number;
+}
+
+export interface CountryInfoAdapter extends CountryCardAdapter {
+  nativeName: string;
+  tld: string;
+  currencies: string[];
+  subregion: string;
+  languages: string[];
+  borders: string[];
+}
+
 export const regionOptions = [
   {
     value: 'asia'
@@ -77,7 +94,7 @@ export interface ICountryCard {
     nativeName: NativeName;
   };
   cca2: string;
-  capital: string;
+  capital: string[];
   region: string;
   population: number;
 }

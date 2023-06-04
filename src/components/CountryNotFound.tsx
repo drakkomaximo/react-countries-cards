@@ -1,6 +1,6 @@
 'use client'
 
-import { WorldIcon } from "@/assets/icons";
+import { PlanetIcon } from "@/assets/icons";
 import { Dictionary } from "@/utils/interfaces";
 import { useTheme } from "next-themes";
 import React from "react";
@@ -12,7 +12,7 @@ export const CountryNotFound = () => {
 
   return (
     <div className="flex flex-wrap flex-col w-full h-[calc(100vh-14rem)] items-center justify-center bg-veryLightGray dark:bg-veryDarkBlue">
-      <WorldIcon
+      <PlanetIcon
         color={
           currentTheme === "dark" ? "hsl(0, 0%, 100%)" : "hsl(200, 15%, 8%)"
         }

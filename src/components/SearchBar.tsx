@@ -1,47 +1,43 @@
 "use client";
 
+import { SearchIcon } from "@/assets/icons";
 import { useCountries } from "@/hooks";
 import { Dictionary } from "@/utils/interfaces";
+import { useTheme } from "next-themes";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 export const SearchBar = () => {
+  const [isActive, setIsActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const { searchHandler } = useCountries();
+  const { systemTheme, theme } = useTheme();
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+    setIsActive(true);
     setSearchValue(e.target.value);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      searchHandler({ searchValue });
+      isActive && searchHandler({ searchValue });
+      setIsActive(false)
     }, 500);
     return () => {
       clearTimeout(timer);
     };
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue, isActive]);
   return (
-    <form>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <svg
-            aria-hidden="true"
-            className="w-5 h-5 text-gray-500 dark:text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            ></path>
-          </svg>
+          <SearchIcon
+            color={
+              currentTheme === "dark" ? "hsl(0, 0%, 100%)" : "hsl(200, 15%, 8%)"
+            }
+          />
         </div>
         <input
           type="search"
@@ -53,6 +49,5 @@ export const SearchBar = () => {
           required
         />
       </div>
-    </form>
   );
 };

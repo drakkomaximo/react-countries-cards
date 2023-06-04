@@ -1,9 +1,11 @@
 import { countryApiUrl } from "@/config";
 import { CountryCardFields, CountryInfoFields } from "@/utils/interfaces";
+import { countryCardAdapter, countryInfoAdapter } from "./adapters";
 
 export const fecthCountriesList = async () => {
   const res = await fetch(`${countryApiUrl}/all${CountryCardFields}`);
-  return await res.json();
+  const data = await res.json()
+  return countryCardAdapter({resp: data})
 };
 
 export const fecthCountriesByRegionList = async ({
@@ -14,12 +16,14 @@ export const fecthCountriesByRegionList = async ({
   const res = await fetch(
     `${countryApiUrl}/region/${region}${CountryCardFields}`
   );
-  return await res.json();
+  const data = await res.json()
+  return countryCardAdapter({resp: data})
 };
 
 export const fecthCountry = async ({ country }: { country: string }) => {
   const res = await fetch(
     `${countryApiUrl}/name/${country}?fullText=true${CountryInfoFields}`
   );
-  return await res.json();
+  const data = await res.json()
+  return countryInfoAdapter({resp: data})
 };

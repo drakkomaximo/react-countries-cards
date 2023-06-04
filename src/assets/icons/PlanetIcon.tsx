@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-export const WorldIcon: FC<{ color: string }> = ({ color }) => {
+export const PlanetIcon: FC<{ color: string }> = ({ color }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

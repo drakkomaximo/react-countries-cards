@@ -1,1 +1,2 @@
-export * from './worldIcon'
+export * from './SearchIcon'
+export * from './PlanetIcon'

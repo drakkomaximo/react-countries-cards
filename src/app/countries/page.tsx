@@ -1,11 +1,11 @@
 "use client";
-import { CountryCard, CountryNotFound } from "@/components";
+import { CountryCard, CountryNotFound, Loader } from "@/components";
 import { useCountries } from "@/hooks";
 import { useEffect, useState } from "react";
 
 const CountriesPage = () => {
   const [isActive, setIsActive] = useState(true);
-  const { countriesFiltered, getCountriesByApi } = useCountries();
+  const { countriesFiltered, countries, getCountriesByApi } = useCountries();
 
   useEffect(() => {
     isActive && getCountriesByApi();
@@ -21,11 +21,13 @@ const CountriesPage = () => {
               key={country.cca2}
               capital={country.capital}
               cca2={country.cca2}
-              common={country.name.common}
+              common={country.commonName}
               population={country.population}
               region={country.region}
             />
           ))
+        ) : countriesFiltered.length === 0 && countries.length === 0 ? (
+          <Loader />
         ) : (
           <CountryNotFound />
         )}

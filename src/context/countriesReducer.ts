@@ -1,13 +1,13 @@
 'use client'
-import { CountriesReducerActions, ICountry, ICountryCard } from "@/utils/interfaces";
+import { CountriesReducerActions, CountryCardAdapter, ICountry } from "@/utils/interfaces";
 import { CountriesState } from ".";
 
 type CountriesActionType =
-  | { type: CountriesReducerActions.SETALLCOUNTRIES, payload: ICountryCard[] }
-  | { type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER, payload: ICountryCard[] }
+  | { type: CountriesReducerActions.SETALLCOUNTRIES, payload: CountryCardAdapter[] }
+  | { type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER, payload: CountryCardAdapter[] }
   | { type: CountriesReducerActions.GETCOUNTRYBYNAME, payload: ICountry }
   | { type: CountriesReducerActions.SETREGIONFILTERVALUE, payload: string }
-  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: ICountry[] };
+  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: CountryCardAdapter[] };
 
 export const countriesReducers = (
   state: CountriesState,
