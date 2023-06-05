@@ -1,6 +1,6 @@
 import { CountriesContext } from "@/context";
 import { fecthCountriesByRegionList, fecthCountriesList } from "@/services";
-import { CountryCardAdapter } from "@/utils/interfaces";
+import { CountryCardAdapter, Dictionary } from "@/utils/interfaces";
 import { useCallback, useContext } from "react";
 
 export const useCountries = () => {
@@ -22,6 +22,7 @@ export const useCountries = () => {
       setCountriesFiltered({ countries: resp.length > 0 ? resp : [] });
     } catch (error) {
       setCountries({ countries: [] });
+      setCountriesFiltered({ countries: [] });
     }
   }, [setCountries, setCountriesFiltered]);
 
@@ -33,11 +34,14 @@ export const useCountries = () => {
         });
         setCountries({ countries: resp.length > 0 ? resp : [] });
         setCountriesFiltered({ countries: resp.length > 0 ? resp : [] });
+        setRegionFilterValue({ region });
       } catch (error) {
         setCountries({ countries: [] });
+        setCountriesFiltered({ countries: [] });
+        setRegionFilterValue({ region: Dictionary.FILTERBYREGION });
       }
     },
-    [setCountries, setCountriesFiltered]
+    [setCountries, setCountriesFiltered, setRegionFilterValue]
   );
 
   const searchHandler = useCallback(

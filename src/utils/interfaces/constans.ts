@@ -73,7 +73,7 @@ export interface CountryInfoAdapter extends CountryCardAdapter {
   borders: string[];
 }
 
-export const regionOptions = [
+export const regionOptions: RegionOptions[] = [
   {
     value: 'asia'
   },
@@ -91,6 +91,10 @@ export const regionOptions = [
   },
 ]
 
+export type RegionOptions = {
+  value: RegionOption
+}
+export type RegionOption = 'asia' | 'oceania' | 'europe' | 'americas' | 'africa'
 export type ThemeModeType = 'dark' | 'light'
 
 interface NativeName {

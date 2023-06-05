@@ -1,3 +1,6 @@
 export * from './formatName'
 export * from './formatNumber'
+export * from './sortCountries'
+export * from './sortRegions'
 export * from './formatCountryNameByCode'
+export * from './identifyIsCorrectRegion'

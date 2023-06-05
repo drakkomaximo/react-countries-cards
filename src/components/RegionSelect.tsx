@@ -1,5 +1,6 @@
 "use client";
 import { useCountries } from "@/hooks";
+import { sortRegions } from "@/utils/helpers";
 import { Dictionary, Routes, regionOptions } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
@@ -31,7 +32,7 @@ export const RegionSelect = () => {
       >
         {Dictionary.FILTERBYREGION}
       </option>
-      {regionOptions.map((region) => (
+      {sortRegions({ regions: regionOptions }).map((region) => (
         <option
           className="capitalize text-sm font-light dark:text-white text-veryLightBlue p-6"
           key={region.value}

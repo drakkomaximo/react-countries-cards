@@ -45,7 +45,7 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
             <Image
               src={CountryDoesNotExistImage}
               alt="CountryDoesNotExistImage"
-              className="w-3/4 sm:w-full h-auto shadow-sm"
+              className="w-4/5 h-auto shadow-sm"
             />
           </div>
         </div>
