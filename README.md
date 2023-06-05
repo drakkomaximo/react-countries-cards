@@ -24,3 +24,6 @@ This app has:
 * Components: Portions of code that are used at specific points in the application, in order to reuse or ensure better readability of the code, ensure better maintenance and possible expansion of the application.
 * Tailwind css: Nextjs natively configures this way of creating the app's UI, so I decided to implement it.
 * Typescript: This is the modern way to create a React app in June 2023.
+
+** Note:
+Using nextjs, we can use its smart folder system to define dynamic routes and make it easier to design this application, simply by calling the specific endpoint and creating a route to consume this information, but the API used didn't have an ideal endpoint to search for. countries, so it was necessary to include a context and on the front side, create the search engine logic.
