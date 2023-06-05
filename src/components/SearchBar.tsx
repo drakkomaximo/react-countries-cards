@@ -2,17 +2,13 @@
 
 import { SearchIcon } from "@/assets/icons";
 import { useCountries } from "@/hooks";
-import { Dictionary } from "@/utils/interfaces";
-import { useTheme } from "next-themes";
+import { COLORS, Dictionary } from "@/utils/interfaces";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 export const SearchBar = () => {
   const [isActive, setIsActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const { searchHandler } = useCountries();
-  const { systemTheme, theme } = useTheme();
-
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const { searchHandler, isDarkModeActive } = useCountries();
 
   const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
     setIsActive(true);
@@ -35,7 +31,7 @@ export const SearchBar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <SearchIcon
             color={
-              currentTheme === "dark" ? "hsl(0, 0%, 100%)" : "hsl(200, 15%, 8%)"
+              isDarkModeActive ? COLORS.WHITE : COLORS.VERYLIGHTBLUE
             }
           />
         </div>

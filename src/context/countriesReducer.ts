@@ -7,7 +7,8 @@ type CountriesActionType =
   | { type: CountriesReducerActions.SETCOUNTRIESBYSEARCHFILTER, payload: CountryCardAdapter[] }
   | { type: CountriesReducerActions.GETCOUNTRYBYNAME, payload: ICountry }
   | { type: CountriesReducerActions.SETREGIONFILTERVALUE, payload: string }
-  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: CountryCardAdapter[] };
+  | { type: CountriesReducerActions.SETCOUNTRIESBYREGION, payload: CountryCardAdapter[] }
+  | { type: CountriesReducerActions.SETDARKMODE, payload: boolean };
 
 export const countriesReducers = (
   state: CountriesState,
@@ -37,6 +38,11 @@ export const countriesReducers = (
       return {
         ...state,
         countries: action.payload
+      };
+    case CountriesReducerActions.SETDARKMODE:
+      return {
+        ...state,
+        isDarkModeActive: action.payload
       };
 
     default:

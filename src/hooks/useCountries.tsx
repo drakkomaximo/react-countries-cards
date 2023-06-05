@@ -11,6 +11,8 @@ export const useCountries = () => {
     setCountriesFiltered,
     setRegionFilterValue,
     setCountries,
+    setDarkMode,
+    isDarkModeActive,
   } = useContext(CountriesContext);
 
   const getCountriesByApi = useCallback(async () => {
@@ -51,6 +53,7 @@ export const useCountries = () => {
   return {
     countries,
     regionFilter,
+    isDarkModeActive,
     setRegionFilterValue,
     setCountries,
     getCountriesByApi,
@@ -58,5 +61,6 @@ export const useCountries = () => {
     countriesFiltered,
     setCountriesFiltered,
     searchHandler,
+    setDarkMode,
   };
 };

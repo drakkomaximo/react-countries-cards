@@ -7,12 +7,14 @@ export interface CountriesState {
   countries: CountryCardAdapter[];
   countriesFiltered: CountryCardAdapter[];
   regionFilter: string;
+  isDarkModeActive: boolean;
 }
 
 const COUNTRIES_INITIAL_STATE: CountriesState = {
   countries: [],
   countriesFiltered: [],
-  regionFilter: Dictionary.FILTERBYREGION
+  regionFilter: Dictionary.FILTERBYREGION,
+  isDarkModeActive: false,
 };
 
 export const CountriesProvider: FC<{ children: JSX.Element }> = ({ children }) => {
@@ -39,8 +41,15 @@ export const CountriesProvider: FC<{ children: JSX.Element }> = ({ children }) =
     });
   };
 
+  const setDarkMode = ({ flag }: {flag: boolean }) => {
+    dispatch({
+      type: CountriesReducerActions.SETDARKMODE,
+      payload: flag,
+    });
+  };
+
   return (
-    <CountriesContext.Provider value={{...state, setRegionFilterValue, setCountries, setCountriesFiltered}}>
+    <CountriesContext.Provider value={{...state, setRegionFilterValue, setCountries, setCountriesFiltered, setDarkMode}}>
       {children}
     </CountriesContext.Provider>
   );

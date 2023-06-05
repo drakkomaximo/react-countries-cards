@@ -9,7 +9,24 @@ export enum Dictionary {
   SEARCHNOTFOUND = "Search not found",
   YOUAREALONEHERE = "You are all alone here...",
   RETURNTO = "Return to",
-  COUNTRIESLIST = "Countries list"
+  COUNTRIESLIST = "Countries list",
+  SYSTEM = "system",
+  THEME = 'theme'
+}
+
+export enum COLORS {
+  DARKBLUE = 'hsl(209, 23%, 22%)',
+  VERYDARKBLUE = 'hsl(207, 26%, 17%)',
+  VERYLIGHTBLUE = 'hsl(200, 15%, 8%)',
+  DARKGRAY = 'hsl(0, 0%, 52%)',
+  VERYLIGHTGRAY = 'hsl(0, 0%, 98%)',
+  WHITE = 'hsl(0, 0%, 100%)',
+
+}
+
+export enum ThemeMode {
+  DARKMODE = 'dark',
+  LIGHTMODE = 'light'
 }
 
 export enum Routes {
@@ -36,6 +53,7 @@ export enum CountriesReducerActions {
   SETCOUNTRIESBYSEARCHFILTER = '[Countries] Set countries by search filter',
   SETCOUNTRIESBYREGION = '[Countries] Set countries by region',
   SETREGIONFILTERVALUE = '[Countries] Set region filter value',
+  SETDARKMODE = '[Countries] Set dark mode',
 }
 
 export interface CountryCardAdapter {
@@ -72,6 +90,8 @@ export const regionOptions = [
     value: 'africa'
   },
 ]
+
+export type ThemeModeType = 'dark' | 'light'
 
 interface NativeName {
   [x: string]: {
@@ -119,7 +139,6 @@ export interface ICountry extends ICountryCard {
 
 export const CountryCardFields = `/?fields=name,capital,cca2,region,population`
 export const CountryInfoFields = `/?fields=name,capital,cca2,region,population,tld,currencies,subregion,languages,borders`
-
 export const Alpha3Codes: Record<string, string> = {
   ABW: "Aruba",
   AFG: "Afghanistan",
