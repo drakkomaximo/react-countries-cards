@@ -9,8 +9,9 @@ export const content = [
 ];
 export const theme = {
   screens:{
-    'xs': '350px',
     ...defaultTheme.screens,
+    'xs': '350px',
+    'md': '778px',
   },
   colors: {
     darkBlue: "hsl(209, 23%, 22%)",

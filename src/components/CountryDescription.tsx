@@ -37,7 +37,7 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
   return (
     <>
       {shortName === Dictionary.COUNTRYDOESNOTEXIST ? (
-        <div className="flex w-screen justify-center items-start">
+        <div className="flex w-screen justify-center items-start h-[calc(100vh-10.3rem)] md:h-auto">
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-veryDarkBlue dark:text-white font-extrabold text-base my-4">
               {Dictionary.COUNTRYDOESNOTEXIST}
@@ -59,12 +59,12 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
               />
             </div>
           </div>
-          <div className="w-full md:w-1/2 xl:pl-32 py-5 md:py-5 lg:py-10 px-10">
+          <div className="w-full md:w-1/2 xl:pl-32 py-5 md:py-5 lg:py-10 px-8">
             <h1 className="text-veryDarkBlue dark:text-white font-extrabold text-base mt-4">
               {shortName}
             </h1>
             <div className="flex flex-col sm:flex-row justify-between mt-4">
-              <div className="w-full sm:w-2/3">
+              <div className="w-full sm:w-1/2">
                 <CustomParagraph
                   label={LabelOption.NATIVENAME}
                   description={nativeName}
@@ -86,7 +86,7 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
                   description={capital}
                 />
               </div>
-              <div className="mt-8 sm:mt-0 w-full sm:w-1/3">
+              <div className="mt-8 sm:mt-0 w-full sm:w-1/2">
                 <CustomParagraph
                   label={LabelOption.TOPLEVELDOMAIN}
                   description={topLevelDomain}
