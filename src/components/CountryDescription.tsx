@@ -35,26 +35,36 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
   topLevelDomain,
 }) => {
   return (
-    <div className="flex w-screen justify-center items-start">
+    <>
       {shortName === Dictionary.COUNTRYDOESNOTEXIST ? (
-        <div className="flex flex-col justify-center items-center">
-          <h1 className="text-veryDarkBlue dark:text-white font-extrabold text-base my-4">{Dictionary.COUNTRYDOESNOTEXIST}</h1>
-          <Image src={CountryDoesNotExistImage} alt="CountryDoesNotExistImage" className="w-3/4 h-auto shadow-sm" />
-        </div>
-      ) : (
-        <>
-          <div className="w-1/2 h-96 py-20 px-32">
-            <Flag
-              code={countryCode}
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+        <div className="flex w-screen justify-center items-start">
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-veryDarkBlue dark:text-white font-extrabold text-base my-4">
+              {Dictionary.COUNTRYDOESNOTEXIST}
+            </h1>
+            <Image
+              src={CountryDoesNotExistImage}
+              alt="CountryDoesNotExistImage"
+              className="w-3/4 h-auto shadow-sm"
             />
           </div>
-          <div className="w-1/2 py-20 px-10">
+        </div>
+      ) : (
+        <div className="flex flex-col md:flex-row w-screen justify-center items-start">
+          <div className="px-10 md:pl-16 lg:pl-32 flex w-full md:w-1/2 justify-center md:justify-start items-center">
+            <div className="w-full mt-10">
+              <Flag
+                code={countryCode}
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 xl:pl-32 py-5 md:py-5 lg:py-10 px-10">
             <h1 className="text-veryDarkBlue dark:text-white font-extrabold text-base mt-4">
               {shortName}
             </h1>
-            <div className="flex justify-between mt-4">
-              <div className="w-2/3">
+            <div className="flex flex-col sm:flex-row justify-between mt-4">
+              <div className="w-full sm:w-2/3">
                 <CustomParagraph
                   label={LabelOption.NATIVENAME}
                   description={nativeName}
@@ -76,7 +86,7 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
                   description={capital}
                 />
               </div>
-              <div className="w-1/3">
+              <div className="mt-8 sm:mt-0 w-full sm:w-1/3">
                 <CustomParagraph
                   label={LabelOption.TOPLEVELDOMAIN}
                   description={topLevelDomain}
@@ -97,8 +107,8 @@ export const CountryDescription: FC<CountryDescriptionProps> = ({
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };

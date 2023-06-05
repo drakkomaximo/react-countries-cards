@@ -11,15 +11,15 @@ export const BorderCountriesList: FC<BorderCountriesList> = ({
   borderCountries,
 }) => {
   return (
-    <div className="flex items-center">
-      <div className="w-3/12">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center">
+      <div className="w-full sm:w-3/12">
         <CustomParagraph label={LabelOption.BORDERCOUNTRIES} />{' '}
       </div>
-      <div className="flex flex-wrap w-9/12">
+      <div className="flex flex-wrap w-full sm:w-9/12 mt-4 sm:m-0">
         {borderCountries.map((country) => (
           <p
             key={country}
-            className="text-sm font-light dark:text-white bg-white dark:bg-darkBlue py-0.5 px-2 m-1"
+            className="text-sm font-light dark:text-white bg-white dark:bg-darkBlue py-0.5 px-2 ml-0 mr-1 mb-1 sm:m-1"
           >
             {formatCountryNameByCode({ alpha3Code: country })}
           </p>

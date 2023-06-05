@@ -9,26 +9,26 @@ export const DarkModeBtn = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       {currentTheme === "dark" ? (
         <p
-          className="flex items-center h-6 cursor-pointer dark:text-white font-extrabold"
+          className="flex justify-end items-center text-end cursor-pointer dark:text-white font-extrabold"
           onClick={() => {
             setTheme("light");
           }}
         >
           <i className="ti ti-sun mr-2"></i>
-          {Dictionary.LIGHTMODE}
+          <span className="hidden xs:block">{Dictionary.LIGHTMODE}</span>
         </p>
       ) : (
         <p
-          className="h-6 cursor-pointer font-extrabold text-veryLightBlue"
+          className="flex justify-end items-center text-end cursor-pointer font-extrabold text-veryLightBlue"
           onClick={() => {
             setTheme("dark");
           }}
         >
-          <i className="ti ti-moon-filled mr-2"></i>
-          {Dictionary.DARKMODE}
+          <i className="ti ti-moon-filled mr-2 "></i>
+          <span className="hidden xs:block">{Dictionary.DARKMODE}</span>
         </p>
       )}
     </div>

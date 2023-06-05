@@ -13,7 +13,7 @@ const CountriesPage = () => {
   }, [countriesFiltered, getCountriesByApi, isActive]);
 
   return (
-    <div className="flex flex-wrap w-full justify-center pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
+    <div className="flex flex-wrap w-full justify-center pt-10 px-8 bg-veryLightGray dark:bg-veryDarkBlue">
       <div className="flex flex-wrap max-w-7xl justify-between">
         {countriesFiltered.length > 0 ? (
           countriesFiltered.map((country) => (
