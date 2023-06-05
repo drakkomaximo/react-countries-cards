@@ -11,7 +11,9 @@ export const theme = {
   screens:{
     ...defaultTheme.screens,
     'xs': '350px',
+    'sm': '656px',
     'md': '778px',
+    'xxl': '1426px',
   },
   colors: {
     darkBlue: "hsl(209, 23%, 22%)",

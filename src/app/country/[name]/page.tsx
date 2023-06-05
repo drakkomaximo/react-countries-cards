@@ -6,11 +6,11 @@ const CountryInfo = async ({ params }: { params: { name: string } }) => {
   const country = await fecthCountry({ country: name });
 
   return (
-    <div className="flex flex-col md:h-[calc(100vh-5.5rem)] flex-nowrap md:flex-wrap w-full items-start justify-start pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
-      <div className="flex flex-wrap max-w-7xl justify-between">
+    <div className="flex flex-col md:h-[calc(100vh-5.5rem)] flex-nowrap md:flex-wrap w-full items-center justify-start pt-10 bg-veryLightGray dark:bg-veryDarkBlue">
+      <div className="flex flex-wrap w-full max-w-[1440px] justify-between">
         <BackBtn />
       </div>
-      <div className="flex flex-wrap max-w-7xl justify-between">
+      <div className="flex flex-wrap w-full max-w-[1440px] justify-between">
         {country && (
           <CountryDescription
             borderCountries={country.borders}

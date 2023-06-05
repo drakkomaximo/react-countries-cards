@@ -8,7 +8,7 @@ export const BackBtn = () => {
   const { regionFilter, countries, setCountriesFiltered } = useCountries();
   return (
     <div className="flex w-screen justify-center items-start">
-      <div className="flex w-1/2 px-10 md:pl-16 lg:pl-32 justify-start items-start">
+      <div className="flex w-1/2 px-10 justify-start items-start">
         <button
           className="flex justify-center items-center px-4 py-2 rounded-md text-sm font-light dark:text-white text-veryLightBlue bg-white dark:bg-darkBlue"
           onClick={() => setCountriesFiltered({ countries })}

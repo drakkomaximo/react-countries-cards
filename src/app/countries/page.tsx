@@ -13,26 +13,24 @@ const CountriesPage = () => {
   }, [countriesFiltered, getCountriesByApi, isActive]);
 
   return (
-    <div className="flex flex-wrap w-full justify-center pt-10 px-8 bg-veryLightGray dark:bg-veryDarkBlue">
-      <div className="flex flex-wrap max-w-7xl justify-between">
-        {countriesFiltered.length > 0 ? (
-          countriesFiltered.map((country) => (
-            <CountryCard
-              key={country.cca2}
-              capital={country.capital}
-              cca2={country.cca2}
-              common={country.commonName}
-              population={country.population}
-              region={country.region}
-            />
-          ))
-        ) : countriesFiltered.length === 0 && countries.length === 0 ? (
-          <Loader />
-        ) : (
-          <SearchNotFound />
-        )}
-      </div>
-    </div>
+    <>
+      {countriesFiltered.length > 0 ? (
+        countriesFiltered.map((country) => (
+          <CountryCard
+            key={country.cca2}
+            capital={country.capital}
+            cca2={country.cca2}
+            common={country.commonName}
+            population={country.population}
+            region={country.region}
+          />
+        ))
+      ) : countriesFiltered.length === 0 && countries.length === 0 ? (
+        <Loader />
+      ) : (
+        <SearchNotFound />
+      )}
+    </>
   );
 };
 
