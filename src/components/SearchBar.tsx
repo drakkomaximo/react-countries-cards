@@ -36,6 +36,7 @@ export const SearchBar = () => {
           />
         </div>
         <input
+          data-testId='inputValue'
           type="search"
           id="default-search"
           className="block shadow-md w-full py-4 pl-14 pr-4 text-sm dark:text-white rounded-sm bg-white dark:bg-darkBlue"
